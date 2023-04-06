@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+body,html {
+  height: 100%;
+  margin:3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url('/static/images/payment.jpg');
+
+  /* Full height */
+  height: 100%; 
+  
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-text {
+   /* Fallback color */
+  color: white;
+  font-weight: bolder;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+    text-shadow: 2px 2px 8px #FF0000;
+  }
+  
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $("#pay").click(function(e)
+      {
+          e.preventDefault();
+          
+      
+           $.get( "http://localhost:8000/paytable/", {}).done(function( data ) 
+           {
+               //alert(data);
+               $("#tab").html(data)
+             
+           });
+           
+      });
+  });
+  $(document).ready(function(){
+    $("#f").submit(function(e)
+    {
+        e.preventDefault();
+        
+        transactiontype=$("#transactiontype").val()
+        date=$("#date").val()
+         $.get( "http://localhost:8000/payorder/", {transactiontype:transactiontype ,date:date }).done(function( data ) 
+         {
+             //alert(data);
+             $("body").html(data)
+           
+         });
+         
+    });
+  });
+  </script>
+<body>
+
+<div class="w3-image"></div>
+
+
+<div class="bg-image" style="width: 100%;">
+
+
+  <div class="bg-text">
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <div id="tab">
+     <h2 style="text-align: center;font-weight: bolder;">Your Orders</h2>
+     <input type="submit" value="Show my orders" id="pay" style="padding:10px ;" >
+     <table class="w3-table"></table>
+    </div>
+    <br><br>
+   
+    <form id="f">
+      <div style="text-align:center;">
+       <label for="transactiontype">TRANSACTION TYPE</label>
+       <select id="transactiontype" name="transactiontype">
+       <option value="transactiontype"></option>
+      
+       <option value="Cash">Cash</option>
+       <option value="Card">Card</option>
+       <option value="transactiontype"></option>
+       </select>
+      </div>
+      <br>
+     <div style="text-align:center;">
+       <label for="DATE">     DATE</label>
+       <input type="DATE"  id="date" name="DATE"  >
+      </div>
+     <br>
+     <br>
+      <input type="submit" id="bill" value="Add To Bill" style="padding:10px ;border-radius:20px;" >
+      <button class="btn" style="height:50px;border-radius:30px;"><a href="/menu#res" style="text-decoration:none;">Add More</a></button>
+      <br><br>
+      <a href="/payment" id="com" style="text-decoration:none;"onClick="alert('YOUR ORDER WILL BE READY IN 30 MINS, THANK YOU ,                HAPPY EATING :)')">Finalize the Above orders</a>
+      <br><br>
+      <p>For exciting offers
+      <a href="/search" id="com" style="text-decoration:none;">CHECK HERE</a></p>
+    </form>
+  
+  </div>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<body>
+
+<div style="margin-left:70px">
+</div>
+<img src="{% static 'images/Home.png' %}" class="w3-border" alt="Restaurant" style="width: 100%; background-color: black; border:black;">
+
+  <div id="contact">
+     <div class="w3-display-container">
+         
+           <div class="w3-display-container" style="padding: 50px; background-color: aliceblue; text-align: center;font-family:'Fuzzy Bubbles', cursive;; line-height: 1.5;letter-spacing: -1px;font-size: 20px;">
+           <h1 style="font-family: 'Gloria Hallelujah', cursive; font-size:100px">Welcome to Brunch</h1>
+             <p style="font-size:30px; padding-left:100px;padding-right: 100px;">Brunch is a neighborhood restaurant from Chef Bobby located in Shimoga’s West Village. 
+                 Reservations are there for only private dining and walk-ins are always welcome as we have a few tables each night.
+                 Our restaurant is first come, first-served.Following government rules mandate, all guests must provide proof of vaccination and a valid ID in order to dine inside. </p>
+         </div> 
+       </div>
+ </div>
+ <div class="w3-display-container"  style="background-color: #F2A154;">
+   <img src="{% static 'images/logo.png' %}" style="width:300px;height: 150px;border-radius:100%; padding-left: 100px;">
+   <div style="text-align:center;">
+   <h2 style="font-size:40px; font-family: 'Permanent Marker', cursive;">Contact Us</h2>
+   <p style="font-size:20px;padding-left:500px;padding-right: 500px;padding-bottom:20px;">Send us a message and we’ll get back to you as soon as possible. You can also reach us by phone at 8088493089.
+     Looking forward to hearing from you!
+     </p>
+     <div class="w3-display-container" style="text-align: center;text-font:100px;">
+        <p style="padding:5px"><a href="tel:8088493089" style="text-decoration:none;font-size:15px;">tel:8088493089</a></p>
+        <p style="padding:5px"><a href="mailto:arpithasv18@gmail.com" style="text-decoration:none;font-size:15px;">mailto:brunchjnnce1485@gmail.com</a>
+          </p>
+          <p style="padding:5px">
+            <a href="https://web.whatsapp.com/" class="float" target="_blank" style="text-decoration:none;font-size:15px;">Whatsapp</a>
+          </p>
+    </div>
+   </div>
+ </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+.mySlides {display:none}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+     /* $.ajaxSetup({
+            headers:
+            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });*/
+    $(document).ready(function(){
+        $("#res").submit(function(e)
+        {
+            e.preventDefault();
+            foodname=$("#foodname").val()
+           //alert(foodid","+foodname)
+             $.get( "http://localhost:8000/uorder/", {foodname:foodname}).done(function( data ) 
+             {
+                 //alert(data);
+                 $("body").html(data)
+               
+             });
+        });
+    });
+    
+  </script>
+<body>
+
+<div class="w3-center">
+  <p style="font-family: 'Kaushan Script', cursive;font-size:30px;">MENUS</p>
+</div>
+
+<div class="w3-content w3-section" style="max-width:70%;">
+  <img class="mySlides" src="{% static 'images/img1.png' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'images/img2.png' %}" style="width:100%">
+  <img class="mySlides" src="{% static 'images/img3.png' %}" style="width:100%">
+</div>
+
+<div class="w3-container" style="padding-top: 50px;">
+
+    <div class="center" style="margin: auto;width: 50%;border: 3px solid black;padding: 10px;text-align: center;">
+        <p>APPETIZERS</p>
+        <p>Potato Wedges(A01), Cheez - it'z(A02) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.150</p>
+        <p>Veggie Sticks(A03), Chicken Sticks(A04) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.170</p>
+        <p>C'h'ris P Bacon Chips(A05) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.200</p>
+      </div>
+
+</div>
+<div class="w3-container" style="padding-top: 50px;">
+
+    <div class="center" style="margin: auto;width: 50%;border: 3px solid black;padding: 10px;text-align: center;">
+        <p>RICE MENU</p>
+        <p>Taiwanese Meal(R01), Singaporean Meal(R02)</p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.250</p>
+        <p>Indie Fried Rice(R03), Biryani Feast(R04) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.200</p>
+        <p>Rice Cakes(R05) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.300</p>
+      </div>
+
+</div>
+<div class="w3-container" style="padding-top: 50px;">
+
+    <div class="center" style="margin: auto;width: 50%;border: 3px solid black;padding: 10px;text-align: center;">
+        <p>PIZZA MANIA</p>
+        <p>Loaded Mozzarella(P01), Veggie Garden(P02) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.200</p>
+        <p>BBQ Party(P03), Toma Toma(P04) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.250</p>
+        <p>Kiddie Lunch Box Pizza(P05) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.150</p>
+      </div>
+
+</div>
+<div class="w3-container" style="padding-top: 50px;">
+
+    <div class="center" style="margin: auto;width: 50%;border: 3px solid black;padding: 10px;text-align: center;">
+        <p>DESSERTS</p>
+        <p>Cup O' Joe(Vanilla or Chocolate)(D01), Hot Chocolate Fudge(D02) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.50</p>
+        <p>Chocolate Funky Town(D03), Fruity Palace(D04) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.60</p>
+        <p>Berry Very Good(D05) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.70</p>
+      </div>
+
+</div>
+<div class="w3-container"  style="padding-top: 50px;">
+
+    <div class="center" style="margin: auto;width: 50%;border: 3px solid black;padding: 10px;text-align: center;">
+        <p>BEVERAGES</p>
+        <p>Green Sea Mocktail(BV01), Fruit Island(BV02) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.100</p>
+        <p>Whisker's Whiskey(BV03), Captain Rum(BV04) </p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.150</p>
+        <p>Cherry Rose(BV05)</p>
+        <p style="padding-bottom: 20px;padding-top: 0;">Rs.200</p>
+      </div>
+  </div>
+  <form id="res">
+<div class="w3-center" >
+    <br>
+    <br>
+    
+    <p style="font-size:30px;">PLACE A ORDER</p>
+   
+   
+    <!--<label for="foodid">FOOD ID</label>
+    <select id="foodid" name="foodid">
+      <option value="foodid"></option>
+      
+      <option value="A01">A01</option>
+      <option value="A02">A02</option>
+      <option value="A03">A03</option>
+      <option value="A04">A04</option>
+      <option value="A05">A05</option>
+
+      <option value="R01">R01</option>
+      <option value="R02">R02</option>
+      <option value="R03">R03</option>
+      <option value="R04">R04</option>
+      <option value="R05">R05</option>
+      
+      <option value="P01">P01</option>
+      <option value="P02">P02</option>
+      <option value="P03">P03</option>
+      <option value="P04">P04</option>
+      <option value="P05">P05</option>
+      
+      <option value="D01">D01</option>
+      <option value="D02">D02</option>
+      <option value="D03">D03</option>
+      <option value="D04">D04</option>
+      <option value="D05">D05</option>
+
+      <option value="BV01">BV01</option>
+      <option value="BV02">BV02</option>
+      <option value="BV03">BV03</option>
+      <option value="BV04">BV04</option>
+      <option value="BV05">BV05</option>
+      
+
+      <option value="foodid"></option>
+    </select><br><br>---->
+
+    <label for="foodname">FOOD NAME</label>
+    <select id="foodname" name="foodname">
+      <option value="foodname"></option>
+      
+      <option value="APPETIZERS: ">APPETIZERS: </option>
+      <option value="Potato Wedges">Potato Wedges</option>
+      <option value="Cheez - it'z">Cheez - it'z</option>
+      <option value="Veggie Sticks">Veggie Sticks</option>
+      <option value="Chicken Sticks">Chicken Sticks</option>
+      <option value="C'h'ris P Bacon Chips">C'h'ris P Bacon Chips</option>
+      <option value=""></option>
+      <option value="RICE MENU:">RICE MENU:</option>
+      <option value="Taiwanese Meal">Taiwanese Meal</option>
+      <option value="Singaporean Meal">Singaporean Meal</option>
+      <option value="Indie Fried Rice">Indie Fried Rice</option>
+      <option value="Biryani Feast">Biryani Feast</option>
+      <option value="Rice Cakes">Rice Cakes</option>
+      <option value=""></option>
+      <option value="PIZZA MANIA">PIZZA MANIA:</option>
+      <option value="Loaded Mozzarella">Loaded Mozzarella</option>
+      <option value="Veggie Garden">Veggie Garden</option>
+      <option value="BBQ Party">BBQ Party</option>
+      <option value="Toma Toma">Toma Toma</option>
+      <option value="Kiddie Lunch Box Pizza">Kiddie Lunch Box Pizza</option>
+      <option value=""></option>
+      <option value="DESSERTS:">DESSERTS:</option>
+      <option value="Cup O' Joe(Vanilla or Chocolate)">Cup O' Joe(Vanilla or Chocolate)</option>
+      <option value="Hot Chocolate Fudge">Hot Chocolate Fudge</option>
+      <option value="Chocolate Funky Town">Chocolate Funky Town</option>
+      <option value="Fruity Palace">Fruity Palace</option>
+      <option value="Berry Very Good">Berry Very Good</option>
+      <option value=""></option>
+      <option value="BEVERAGES:">BEVERAGES:</option>
+      <option value="Green Sea Mocktail">Green Sea Mocktail</option>
+      <option value="Fruit Island">Fruit Island</option>
+      <option value="Whisker's Whiskey">Whisker's Whiskey</option>
+      <option value="Captain Rum">Captain Rum</option>
+      <option value="Cherry Rose">Cherry Rose</option>
+      
+      <option value="foodname"></option>
+    </select>
+    <br><br>
+    <input id="add" type="submit" value="Confirm" style="padding:10px ;" >
+    <br><br>
+    <!--<input type="button" onclick="location.href='/payment';" value="PAY" />---->
+    <p style="font-family: 'Kaushan Script', cursive;font-size:30px;">To  taste,  visit  once  and  there  is  an  offer  for  first  visit:)</p>
+    
+  </div>
+</form>
+
+<script>
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+  }
+
+</script>
+  
+
+</body>
+</html>
+{% endblock %}
